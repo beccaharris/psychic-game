@@ -15,6 +15,14 @@ function resetGuess() {
 
 document.onkeyup = function(event) {
   var playerGuess = String.fromCharCode(event.keyCode).toLowerCase();
+  if (guessesMade.indexOf(playerGuess) === -1) {
+    guessesMade.push(playerGuess)
+    console.log(guessesMade)
+  } else if (guessesMade.indexOf(playerGuess) > -1) {
+    alert("You already guessed me! Try another letter")
+  }
+}
+
 
   
   // Alert the player if they are guessing something other than a-z // 
@@ -51,4 +59,3 @@ document.onkeyup = function(event) {
 
 
 
-}
