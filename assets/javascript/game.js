@@ -15,26 +15,25 @@ function resetGuess() {
 
 document.onkeyup = function(event) {
   var playerGuess = String.fromCharCode(event.keyCode).toLowerCase();
-  
+
   if ((guessesMade.indexOf(playerGuess) === -1) && (computerChoices.indexOf(playerGuess) !== -1)) {
-    guessesMade.push(playerGuess)
+    guessesMade.push(playerGuess);
+    if(playerGuess === computerGuess) {
+      alert("You won!");
+      wins++;
+      resetGuess()
+    } if (playerGuess !== computerGuess) {
+      guessesLeft--
+    } if (guessesLeft === 0) {
+      alert("You lost :( - better luck next time! Click OK to reset");
+      losses++;
+      resetGuess()
+    }
   } else if (guessesMade.indexOf(playerGuess) > -1) {
     alert("You already guessed me! Try another letter")
   } else if (computerChoices.indexOf(playerGuess) === -1) {
     alert("You picked an invalid character! Pick a letter")
   } 
-
-  if (playerGuess === computerGuess) {
-    alert("You won!");
-    wins++;
-    resetGuess()
-  } if (playerGuess !== computerGuess) {
-    guessesLeft--
-  } if (guessesLeft === 0) {
-    alert("You lost :( - better luck next time! Click OK to reset");
-    losses++;
-    resetGuess()
-  }
 
   var html = 
   '<p>Wins: ' + wins + '</p>' +
