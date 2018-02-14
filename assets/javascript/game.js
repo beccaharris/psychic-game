@@ -15,12 +15,14 @@ function resetGuess() {
 
 document.onkeyup = function(event) {
   var playerGuess = String.fromCharCode(event.keyCode).toLowerCase();
-  if (guessesMade.indexOf(playerGuess) === -1) {
+  if ((guessesMade.indexOf(playerGuess) === -1) && (computerChoices.indexOf(playerGuess) !== -1)) {
     guessesMade.push(playerGuess)
     console.log(guessesMade)
   } else if (guessesMade.indexOf(playerGuess) > -1) {
     alert("You already guessed me! Try another letter")
-  }
+    } else if (computerChoices.indexOf(playerGuess) === -1) {
+      alert("You picked an invalid character! Pick a letter")
+  } 
 }
 
 
