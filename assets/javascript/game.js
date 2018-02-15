@@ -6,6 +6,7 @@ var losses = 0;
 var guessesLeft = 9;
 var guessesMade = []
 
+
 // Resets the guessesLeft, guessesMade, and sets a new ComputerGuess // 
 function resetGuess() {
   computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
@@ -13,16 +14,18 @@ function resetGuess() {
   guessesLeft = 9;
 }
 
+
+
 document.onkeyup = function(event) {
   var playerGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
   if ((guessesMade.indexOf(playerGuess) === -1) && (computerChoices.indexOf(playerGuess) !== -1)) {
     guessesMade.push(playerGuess);
-    if(playerGuess === computerGuess) {
+    if (playerGuess === computerGuess) {
       alert("You won!");
       wins++;
       resetGuess()
-    } if (playerGuess !== computerGuess) {
+    } else if (playerGuess !== computerGuess) {
       guessesLeft--
     } if (guessesLeft === 0) {
       alert("You lost :( - better luck next time! Click OK to reset");
@@ -35,11 +38,13 @@ document.onkeyup = function(event) {
     alert("You picked an invalid character! Pick a letter")
   } 
 
+
+
   var html = 
   '<p>Wins: ' + wins + '</p>' +
   '<p>Losses: ' + losses + '</p>' +
   '<p>Guesses Remaining: ' + guessesLeft + '</p>' +
-  '<p>Your Previous Guesses: ' + guessesMade + '</p>'
+  '<p>Your Previous Guesses: ' + guessesMade.join(' -- ') + '</p>'
 
   document.querySelector('#game-content').innerHTML = html;
 }
