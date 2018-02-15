@@ -33,9 +33,9 @@ document.onkeyup = function(event) {
       resetGuess()
     }
   } else if (guessesMade.indexOf(playerGuess) > -1) {
-    alert("You already guessed me! Try another letter")
+      alert("You already guessed me! Try another letter")
   } else if (computerChoices.indexOf(playerGuess) === -1) {
-    alert("You picked an invalid character! Pick a letter")
+      alert("You picked an invalid character! Pick a letter")
   } 
 
 
