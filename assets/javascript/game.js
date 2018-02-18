@@ -15,7 +15,6 @@ function resetGuess() {
 
 document.onkeyup = function(event) {
   var playerGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
   if ((guessesMade.indexOf(playerGuess) === -1) && (computerChoices.indexOf(playerGuess) !== -1)) {
     guessesMade.push(playerGuess);
     if (playerGuess === computerGuess) {
@@ -25,7 +24,7 @@ document.onkeyup = function(event) {
     } else if (playerGuess !== computerGuess) {
       guessesLeft--
     } if (guessesLeft === 0) {
-      alert("You lost :( - better luck next time! Click OK to reset");
+      alert("You lost! The computer guessed the letter: " + computerGuess.toUpperCase() + ". Better luck next time! Click OK to reset");
       losses++;
       resetGuess()
     }
@@ -39,7 +38,7 @@ document.onkeyup = function(event) {
   '<p>Wins: ' + wins + '</p>' +
   '<p>Losses: ' + losses + '</p>' +
   '<p>Guesses Remaining: ' + guessesLeft + '</p>' +
-  '<p>Your Previous Guesses: ' + guessesMade.join(' -- ') + '</p>'
+  '<p>Your Previous Guesses:<br> ' + guessesMade.join(' -- ') + '</p>'
 
   document.querySelector('#game-content').innerHTML = html;
 }
